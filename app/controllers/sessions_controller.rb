@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
   
 
-  def create 
-    flash[:notice] = "Welcome #{user.email}"
+  def create  
+    email = params[:email]
+    flash[:notice] = "Welcome #{email}" 
     redirect_to root_path 
   end
   

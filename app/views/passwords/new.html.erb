@@ -7,12 +7,12 @@
               </h1>
               <%= form_with url: update_password_path(params[:id]), method: :put ,class: "space-y-4 md:space-y-6" do |f| %>
                   <div> 
-                      <%= f.password_field :password, class: "text-field", placeholder: "your password", id: "new-password"%>
+                      <%= f.password_field :password, class: "text-field", placeholder: "your password", id: "password"%>
                   </div>
                   <div>
                       <%= f.password_field :password_confirmation, class: "text-field", placeholder: "your password", id: "password-confirmation"%>
                   </div>
-                  <%= f.submit "Send", class: "submit", id: "user-password-submit" %>
+                  <%= f.submit "Send", class: "submit", id: "update" %>
               <% end %>
           </div>
       </div>
