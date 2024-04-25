@@ -1,20 +1,29 @@
 class SessionsController < ApplicationController
-  
+  before_action :user, only: %i[create destory]
+
 
   def create  
-    email = params[:email]
-    flash[:notice] = "Welcome #{email}" 
-    redirect_to root_path 
+    if user.nil? 
+      redirect_to sign_in_path, alert: 'Email or password incorret.'
+    else 
+      email = params[:email]
+      session[:user] = user.id 
+
+      flash[:notice] = "Welcome #{email}"
+      redirect_to root_path
+    end
   end
   
   def destroy
-    current_user = nil 
-    redirect_to sign_out_path 
+    if session[:user]
+      session.delete(:user) 
+      redirect_to root_path
+    end 
   end 
 
   private 
     def user 
-      User.find_by(email: params[:email])
+      @user = User.find_by(email: params[:email])
         &.authenticate(params[:password])
     end
 

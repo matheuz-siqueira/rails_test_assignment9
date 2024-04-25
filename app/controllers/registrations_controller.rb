@@ -9,8 +9,8 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save 
-      flash[:notice] = "Welcome #{@user.email}"
-      redirect_to root_path 
+      session[:user] = @user.id
+      redirect_to root_path, notice: "Welcome #{@user.email}" 
     end
   end 
 

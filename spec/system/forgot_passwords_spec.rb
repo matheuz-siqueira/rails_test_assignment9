@@ -17,9 +17,8 @@ RSpec.describe "PasswordsController", type: :system do
   it 'allow the user to recover their password' do 
 
     sign_up 
-
     visit '/'  
-    click_on 'user-login'
+    click_on 'Sign In'
     click_on 'forgot-password' 
     fill_in 'user-email', with: 'jdoe@email.com'
     click_on 'submit-forgot-password'
@@ -27,7 +26,6 @@ RSpec.describe "PasswordsController", type: :system do
 
     sent_email = last_email_sent
   
-    # open_email("jdoe@gmail.com", with_subject: "Password recovery")
     open_email(sent_email.to.first)
     expect(sent_email).to be_present
 
