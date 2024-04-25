@@ -15,8 +15,7 @@ RSpec.describe "PasswordsController", type: :system do
   end
 
   it 'allow the user to recover their password' do 
-
-    sign_up 
+    
     visit '/'  
     click_on 'Sign In'
     click_on 'forgot-password' 
